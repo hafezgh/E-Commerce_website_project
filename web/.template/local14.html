@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<style>
+body {
+    text-align:center;
+    font-family: Courier, Arial;
+}
+</style>
+
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+  <body style="text-align: center;">
+    <h1>WELCOME ADMIN!</h1>
+    <div>
+        <form action="/logout" method="get">
+            <button class="logoutbutton" type="submit">Logout</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+    <div class="col-sm-6">
+        <h2>Upload Product File</h2>
+      <form action="/adminhome" method="post" enctype="multipart/form-data">
+        <b>Choose product type:</b>
+        <br>
+        <span>
+            <div class="checkbox">
+                Mobile <input type="radio" name="producttype" value="mobile" checked>
+            </div>
+            <div class="checkbox">
+                TV <input type="radio" name="producttype" value="tv">
+            </div>
+            <div class="checkbox">
+                Car <input type="radio" name="producttype" value="car">
+            </div>
+        </span>
+        <br>
+        <b>Choose File:</b>
+        <br>
+        <input name="fileName" type="text" placeholder="File Name" required>
+        <input type="file" name="file">
+        <br>
+        <br>
+        <button class="button" type="submit">Upload</button>
+      </form>
+      <br>
+      <br>
+    </div>
+
+    <div class="col-sm-6">
+        <h2>Show Offers</h2>
+        <form action="/alloffers" method="post" onsubmit="target_popup(this)" enctype="multipart/form-data">
+          <b>Sorted By:</b>
+          <span style="box-sizing: border-box;">
+              <div class="checkbox">
+                  Offer ID <input type="radio" name="field" value="offerId" checked>
+              </div>
+              <div class="checkbox">
+                  Offer Price <input type="radio" name="field" value="offerPrice">
+              </div>
+          </span>
+          <br>
+          <span>
+              <div class="checkbox">
+                  Descending <input type="radio" name="order" value="DESCEND" checked>
+              </div>
+              <div class="checkbox">
+                  Ascending <input type="radio" name="order" value="ASCEND">
+              </div>
+          </span>
+          <br>
+          <button class="button" type="submit">Show</button>
+        </form>
+    </div>
+    </div>
+  </body>
+</html>

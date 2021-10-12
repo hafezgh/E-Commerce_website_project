@@ -1,0 +1,1 @@
+g++ -std=c++11 webMain.cpp reqHandlers.cpp myServer.cpp ../APHTTP/server/server.cpp ../APHTTP/server/route.cpp ../APHTTP/utils/request.cpp ../APHTTP/utils/response.cpp ../APHTTP/utils/template_parser.cpp ../APHTTP/utils/utilities.cpp domainAndAI/siteInterface.cpp domainAndAI/seller.cpp domainAndAI/buyer.cpp domainAndAI/offer.cpp domainAndAI/CommentEvaluatorAI.cpp

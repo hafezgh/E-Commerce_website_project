@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<style>
+
+body {
+    text-align:center;
+    font-family: Courier, Arial;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+</style>
+
+<html>
+  <body>
+    <h1>WALLET</h1>
+    <br>
+    <div>
+        <p style="font-size:1.5em;"><b> Current Credit: </b></p>
+        <p style="font-size:2em;"><b>
+        <%
+                cout<<context["credit1"];
+        %>
+        </b></p>
+        <br>
+    </div>
+    <br>
+    <div>
+    <h2>Charge Account</h2>
+      <form action="/chargewallet" method="post">
+        <input name="amount" type="text" placeholder="Amount">
+        <button class="chargebutton" type="submit">Charge</button>
+      </form>
+    </div>
+  </body>
+</html>

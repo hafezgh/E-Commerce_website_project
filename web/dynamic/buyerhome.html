@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<style>
+
+body {
+    text-align:center;
+    font-family: Courier, Arial;
+}
+
+</style>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<html>
+  <body style="text-align:center;">
+    <h1>Welcome <%cout<<context["buyerName"];%></h1>
+    <div style="float:right;" class="toppagebox">
+        <form action="/logout" method="get">
+            <button class="toppagebutton" type="submit">Logout</button>
+        </form>
+    </div>
+    <div style="float:center;" class="toppagebox">
+        <form action="/getcart" method="get">
+            <button class="toppagebutton" type="submit">Cart</button>
+        </form>
+    </div>
+    <div id="walletajax" style="float:left;" class="toppagebox">
+        <form action="/wallet" method="get">
+            <button id="walletrevealer" class="toppagebutton">Wallet</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2 style="text-align:center;">All Products</h2>
+    <div style="text-align:center;">
+        <%
+            if(context["product1"]=="")
+                context["allproductsdetail"]="There are no products available right now!";
+            cout<<context["listheader"];
+        %>
+        <br>
+        <%
+            for(int i=1;context["product"+to_string(i)]!="";i++)
+            {
+        %>
+        <form action="/productdetail" method="get">
+            <input name="productid" type="hidden" value=<%cout<<i;%> >
+            <button class="productdetailbutton" type="submit"><b><%cout<<context["product"+to_string(i)];%></b></button>
+        </form>
+        <br>
+        <%
+            }
+        %>
+    </div>
+  </body>
+</html>

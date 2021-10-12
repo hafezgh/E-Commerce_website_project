@@ -1,0 +1,2 @@
+g++ -std=c++11 siteInterface.cpp seller.cpp buyer.cpp offer.cpp CommentEvaluatorAI.cpp
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<style>
+
+body {
+    text-align:center;
+    font-family: Courier, Arial;
+}
+
+table{
+    float:center;
+    text-align:center;
+    font-family: Courier, Arial;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 10px;
+}
+
+th, td {
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+tr:hover {background-color: #f5f5f5;}
+
+input[type=text] {
+  width: 50%;
+  padding: 7px 7px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+textarea{
+      width: 80%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 15px;
+}
+.cth, .ctd {
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size:1.5em;
+}
+
+
+
+</style>
+<html>
+  <body style>
+    <h1> <% cout<<context["productname"]; %> Details Are Given Below:</h1>
+    <br>
+    <form method="get" action="/productdetail">
+        <input name="productid" type="hidden" value=<%cout<<context["productid"];%> >
+        <br>
+    </form>
+    <div style="text-align:center;float:center;">
+        <br>
+        <br>
+        <table>
+            <%
+                for(int i=1;context["feature"+to_string(i)+"-name"]!="";i++)
+                {
+            %>
+                <tr>
+                    <td><b> <%cout<<context["feature"+to_string(i)+"-name"];%> </td>
+                    <td><b> <%cout<<context["feature"+to_string(i)+"-value"];%> </td>
+                </tr>
+            <%
+                }
+            %>
+        </table>
+        <h2>Offers On Product</h2>
+        <br>
+        <table>
+            <tr>
+                <th> Offer ID </th>
+                <th> Offer Unit Price </th>
+                <th> Offer Amount </th>
+            </tr>
+            <%
+            for(int i=1;context["offer"+to_string(i)+"-offerid"]!="";i++)
+            {
+                string path=context["offer"+to_string(i)+"-offerid"];
+            %>
+            <tr>
+                <td> <% cout<<context["offer"+to_string(i)+"-offerid"]; %> </td>
+                <td> <% cout<<context["offer"+to_string(i)+"-unitprice"]; %> </td>
+                <td> <% cout<<context["offer"+to_string(i)+"-amount"]; %> </td>
+                <% if(context["offer"+to_string(i)+"-amount"]!="0") { %>
+                <td>
+                    <form action="/addproducttocart" method="post" >
+                        <input name="amount" type="text" placeholder="Amount">
+                        <input name="offerid" type="hidden" value=<%cout<<path;%> >
+                        <button class="addtocartbutton" type="submit">Add To Cart</button>
+                    </form>
+                </td>
+                <% }
+                if(context["offer"+to_string(i)+"-amount"]=="0") { %>
+                <td>
+                    <b style="font-size:1.5em;">Out Of Stock</b>
+                </td>
+                <% } %>
+            </tr>
+            <%
+            }
+            %>
+        </table>
+    </div>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
